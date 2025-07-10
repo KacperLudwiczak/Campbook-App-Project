@@ -1,5 +1,6 @@
-using Campbook_App.Models;
 using Microsoft.AspNetCore.Identity;
+
+namespace Campbook_App.Models;
 
 public class ApplicationUser : IdentityUser
 {

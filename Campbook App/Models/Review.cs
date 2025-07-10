@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Campbook_App.Models;
+
+namespace Campbook_App.Models;
 
 public class Review
 {
