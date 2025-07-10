@@ -50,7 +50,12 @@ public class CampgroundsController : Controller
 
         foreach (var file in images)
         {
-            var image = await _cloudinaryService.UploadAsync(file);
+            var imageUrl  = await _cloudinaryService.UploadImageAsync(file);
+            var image = new Image
+            {
+                Url = imageUrl,
+                Filename = file.FileName
+            };
             campground.Images.Add(image);
         }
 
@@ -112,15 +117,20 @@ public class CampgroundsController : Controller
 
         foreach (var file in images)
         {
-            var img = await _cloudinaryService.UploadAsync(file);
-            campground.Images.Add(img);
+            var imageUrl = await _cloudinaryService.UploadImageAsync(file);
+            var image = new Image
+            {
+                Url = imageUrl,
+                Filename = file.FileName
+            };
+            campground.Images.Add(image);
         }
 
         if (deleteImages != null && deleteImages.Any())
         {
             foreach (var filename in deleteImages)
             {
-                await _cloudinaryService.DeleteAsync(filename);
+                await _cloudinaryService.DeleteImageAsync(filename);
                 campground.Images.RemoveAll(i => i.Filename == filename);
             }
         }
