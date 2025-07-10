@@ -1,7 +1,12 @@
+using Campbook_App.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<IGeocodingService, MapboxGeocodingService>();
+
 
 var app = builder.Build();
 
