@@ -40,6 +40,11 @@ public class CampgroundsController : Controller
     [Authorize]
     public async Task<IActionResult> Create(Campground campground, List<IFormFile> images)
     {
+        if (string.IsNullOrWhiteSpace(campground.Location))
+        {
+            ModelState.AddModelError("Location", "Location is required.");
+            return View("New", campground); // Or whatever view you return
+        }
         var geoData = await _geocodingService.GeocodeAsync(campground.Location);
         campground.Geometry = geoData;
 
