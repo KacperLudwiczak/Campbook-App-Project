@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Campbook_App.Data;
+using Campbook_App.Models;
 
 [Authorize]
 public class ReviewsController : Controller

@@ -30,7 +30,7 @@ public class MapboxGeocodingService : IGeocodingService
 
         return new Geometry
         {
-            Coordinates = new[]
+            Coordinates = new List<double>
             {
                 coords[0].GetDouble(), // longitude
                 coords[1].GetDouble()  // latitude
