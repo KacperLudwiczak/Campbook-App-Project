@@ -485,3 +485,6 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 Campbook App/campbook.db
+Campbook App/campbook.db-wal
+.gitignore
+Campbook App/campbook.db-shm
