@@ -1,4 +1,6 @@
+using Campbook_App.Data;
 using Campbook_App.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 builder.Services.AddScoped<IGeocodingService, MapboxGeocodingService>();
-
+builder.Services.AddDbContext<ApplicationDbContext>(option => 
+{
+    option.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 var app = builder.Build();
 
